@@ -5,6 +5,7 @@ namespace Tyea\RedLog;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use DateTime;
+use Illuminate\Support\Facades\Validator;
 
 class LogTableCommand extends Command
 {
@@ -14,7 +15,7 @@ class LogTableCommand extends Command
 	
 	public function handle()
 	{
-		$table = Config::get("logging.database.table");
+		$table = Config::get("logging.channels.database.table");
 		$now = (new DateTime("now"))->format("Y_m_d_His");
 		$path = database_path() . "/migrations/" . $now . "_" . "create_" . $table . "_table.php";
 		$class = "Create" . Str::studly($table) . "Table";

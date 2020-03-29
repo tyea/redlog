@@ -12,7 +12,7 @@ class {{ class }} extends Migration
             $table->id();
             $table->string("hostname");
             $table->longText("message");
-            $this->timestamp("logged_at");
+            $table->timestamp("logged_at");
         });
     }
 

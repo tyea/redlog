@@ -5,12 +5,15 @@ namespace Tyea\RedLog;
 use Illuminate\Console\Command;
 use DateTime;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class LogClearCommand extends Command
 {
-	protected $signature = "log:clear {days}";
+	protected $signature = "log:clear {days=14}";
 	
-	protected $description = "Flush the log database table";
+	protected $description = "Remove old logs from the logs database table";
 	
 	public function handle()
 	{    	
@@ -23,8 +26,8 @@ class LogClearCommand extends Command
 			$this->line("<error>The \"days\" argument is invalid</error>");
 			return 1;
 		}
-		$past = new DateTime("now - " . $days . " days");
-		$table = Config::get("logging.database.table");
+		$past = new DateTime("now - " . Str::replaceFirst("+", "", $days) . " days");
+		$table = Config::get("logging.channels.database.table");
 		DB::table($table)->where("logged_at", "<", $past)->delete();
 		return 0;
 	}

@@ -44,7 +44,7 @@ php artisan migrate
 Update your `app/Console/Kernel.php` file:
 
 ```
-$schedule->command("log:clear 7")->daily();
+$schedule->command("log:clear")->daily();
 ```
 
 ## Author

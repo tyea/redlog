@@ -10,7 +10,7 @@ class DatabaseHandler extends AbstractProcessingHandler
 {
 	protected function write(array $record): void
 	{
-		$table = Config::get("logging.database.table");
+		$table = Config::get("logging.channels.database.table");
 		DB::table($table)->insert([
 			"hostname" => gethostname(),
 			"message" => $record["formatted"],
