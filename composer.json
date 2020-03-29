@@ -1,0 +1,39 @@
+{
+    "name": "tyea/redlog",
+    "description": "A Laravel package for writing log messages to a MySQL, PostgreSQL, SQLite, or SQL Server database",
+    "keywords": [
+    	"laravel",
+    	"log",
+    	"logging",
+    	"relational",
+    	"database",
+    	"redlog",
+    	"mysql",
+    	"postgresql",
+    	"sqlite",
+    	"sql server",
+    	"monolog",
+    	"logger"
+    ],
+	"homepage": "https://github.com/tyea/redlog",
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Tom Yeadon",
+			"homepage": "http://www.tomyeadon.com"
+		}
+	],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Tyea\\RedLog\\": "src/"
+        }
+    },
+    "extra": {
+		"laravel": {
+			"providers": [
+				"Tyea\\RedLog\\RedLogServiceProvider"
+			]
+		}
+	}
+}
