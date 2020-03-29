@@ -21,7 +21,7 @@ class LogTableCommand extends Command
 		$contents = str_replace(
 			["{{ table }}", "{{ class }}"],
 			[$table, $class],
-			file_get_contents(__DIR__ . "/template.txt")
+			file_get_contents(__DIR__ . "/migration.php.example")
 		);
 		$success = file_put_contents($path, $contents);
 		return !boolval($success);
