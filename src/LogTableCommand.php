@@ -5,7 +5,7 @@ namespace Tyea\RedLog;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use DateTime;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Config;
 
 class LogTableCommand extends Command
 {
