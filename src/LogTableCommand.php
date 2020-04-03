@@ -11,7 +11,7 @@ class LogTableCommand extends Command
 {
 	protected $signature = "log:table";
 	
-	protected $description = "Create a migration for the log database table";
+	protected $description = "Create a migration for the logs database table";
 	
 	public function handle()
 	{
@@ -24,7 +24,11 @@ class LogTableCommand extends Command
 			[$table, $class],
 			file_get_contents(__DIR__ . "/migration.php.example")
 		);
-		$success = file_put_contents($path, $contents);
-		return !boolval($success);
+		if (!file_put_contents($path, $contents)) {
+			$this->error("Could not create migration");
+			return 0;
+		}
+		$this->info("Migration created successfully!");
+		return 1;
 	}
 }

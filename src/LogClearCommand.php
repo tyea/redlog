@@ -13,7 +13,7 @@ class LogClearCommand extends Command
 {
 	protected $signature = "log:clear {days=14}";
 	
-	protected $description = "Remove old logs from the logs database table";
+	protected $description = "Flush the logs database table";
 	
 	public function handle()
 	{    	
@@ -29,6 +29,7 @@ class LogClearCommand extends Command
 		$past = new DateTime("now - " . Str::replaceFirst("+", "", $days) . " days");
 		$table = Config::get("logging.channels.database.table");
 		DB::table($table)->where("logged_at", "<", $past)->delete();
+		$this->info("Logs database table cleared!");
 		return 0;
 	}
 }
