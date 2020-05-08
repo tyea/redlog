@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Config;
 class LogTableCommand extends Command
 {
 	protected $signature = "log:table";
-	
+
 	protected $description = "Create a migration for the logs database table";
-	
+
 	public function handle()
 	{
 		$table = Config::get("logging.channels.database.table");

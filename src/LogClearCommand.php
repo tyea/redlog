@@ -12,11 +12,11 @@ use Illuminate\Support\Str;
 class LogClearCommand extends Command
 {
 	protected $signature = "log:clear {days=14}";
-	
+
 	protected $description = "Flush the logs database table";
-	
+
 	public function handle()
-	{    	
+	{
 		$days = $this->argument("days");
 		$validator = Validator::make(
 			["days" => $days],
